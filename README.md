@@ -30,6 +30,14 @@ To start the listener simply run listener.py.
 
 ## About the chat protocol
 
+MQTT allows us to transfer a payload. This Payload has to be a byte array like type. Internaly the payload is represented as a python dictionary. This dictionary has to be converted in order to be transmitted. In this Project JSON is used for that purpose, since the json.dumps() and json.loads() methods from the json package for python allow for easy conversion.
+
+The messages have multiple fields:
+
+"type": Either "message" or "info"
+"from": Username of the author
+"message": only present if "type" is "message", contains the message string
+
 ## Misc
 
 Documentation of the paho mqtt library for python
