@@ -25,4 +25,12 @@ You can manually interact with your new broker:
 
 ## How to start the application
 
+Make sure you have the paho-mqtt python package installed.<br>
+To start the listener simply run listener.py.
+
 ## About the chat protocol
+
+## Misc
+
+Documentation of the paho mqtt library for python
+[https://www.eclipse.org/paho/clients/python/docs/#client]
