@@ -34,9 +34,10 @@ MQTT allows us to transfer a payload. This Payload has to be a byte array like t
 
 The messages have multiple fields:
 
-"type": Either "message" or "info"
+"type": Either "message" or "notice"
 "from": Username of the author
 "message": only present if "type" is "message", contains the message string
+"notice": only present if "type" is "info", contains a string description
 
 ## Misc
 
