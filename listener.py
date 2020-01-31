@@ -1,6 +1,7 @@
 # This part of the Chat application recieves the incoming messages and prints them
 
 import paho.mqtt.client as mqtt
+import json
 
 def run():
 
@@ -59,7 +60,9 @@ def run():
     input("Press Enter to disconnect ... \n")
 
     #sending a good by message
-    mqtt_client.publish(topic, payload = "User " + username + " disconnecting from " + topic + " .")
+    notice = "User " + username + " disconnecting from " + topic + " ."
+    payload = {"type": "notice", "from": username, "notice": notice }
+    mqtt_client.publish(topic, json.dumps(payload))
 
     #stopping the message loop
     mqtt_client.loop_stop()
@@ -76,12 +79,24 @@ def behaviour_on_connect(client, userdata, flags, rc):
 #automaticly called on successfull subscription
 def behaviour_on_subscribe(client, userdata, mid, granted_qos):
     #we inform everyone subscribed to the topic that we are now also subscribed
-    client.publish(userdata.get("topic"), payload = "User " + userdata.get("username") + " is now subscribed to " + userdata.get("topic") + " .")
+    notice = "User " + userdata.get("username") + " is now subscribed to " + userdata.get("topic") + " ."
+    payload = {"type": "notice", "from": userdata.get("username"), "notice": notice }
+
+    client.publish(userdata.get("topic"), json.dumps(payload))
 
 #automaticly called on recieving a message
 def behaviour_on_message(client, userdata, message):
     #the message recieved is a MQTT message clss with with the attributes topic, payload, qos and retain
-    print(message.payload)
+    #the payload contains the json and from that we extract a python dictionary
+    message_data = json.loads(message.payload)
+
+    #a normal message is just going to get printed
+    if message_data["type"] == "message":
+        print(str(message_data["from"]) + ": " + str(message_data["message"]))
+
+    #print the notice from a "info" type message
+    if message_data["type"] == "notice":
+        print(str(message_data["notice"]))
 
 #automaticly called if the client is disconnected from the server
 def behaviour_on_disconnect(client, userdata, rc):
