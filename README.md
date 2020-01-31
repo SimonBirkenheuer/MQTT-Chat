@@ -25,8 +25,11 @@ You can manually interact with your new broker:
 
 ## How to start the application
 
-Make sure you have the paho-mqtt python package installed.<br>
-To start the listener simply run listener.py.
+Make sure you have the paho-mqtt and json python packages installed.<br>
+To read the chat you have to start the listener.py.<br>
+In order to send messages you have to start the publisher.py.<br>
+
+Both programs allow for a host, topic and a username to be specified.
 
 ## About the chat protocol
 
@@ -34,10 +37,10 @@ MQTT allows us to transfer a payload. This Payload has to be a byte array like t
 
 The messages have multiple fields:
 
-"type": Either "message" or "notice"
-"from": Username of the author
-"message": only present if "type" is "message", contains the message string
-"notice": only present if "type" is "info", contains a string description
+"type": Either "message" or "notice"<br>
+"from": Username of the author<br>
+"message": Only present if "type" is "message", contains the message string<br>
+"notice": Only present if "type" is "info", contains a string description<br>
 
 ## Misc
 
