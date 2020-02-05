@@ -22,7 +22,9 @@ You can manually interact with your new broker:
 *The topic for testing is aptly named test/.*
 
 `mosquitto_pub -h localhost -t test/ -u Test -P test -m "Hello World"`<br>
-*Publishes the message "Hello World" to the test/ topic. The message should now be recieved by the subscribed listener from above.*
+*Publishes the message "Hello World" to the test/ topic. The message should now be recieved by the subscribed listener from above.*<br>
+
+If you subscribe to a topic you do not have read access to you wont get a error you just wont get any messages.
 
 ## How to start the application
 

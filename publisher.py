@@ -37,6 +37,7 @@ def run():
     #the functions are defined further down in the code
     #---
 
+    mqtt_client.on_connect = behaviour_on_connect
     mqtt_client.on_publish = behaviour_on_publish
     mqtt_client.on_disconnect = behaviour_on_disconnect
 
@@ -75,6 +76,16 @@ def run():
     mqtt_client.disconnect()
 
     #now we are done and the program is going to end
+
+#automaticly called after connection attempt
+def behaviour_on_connect(client, userdata, flags, rc):
+
+    #successfull connection
+    if rc == 0:
+        print("Connection to the broker established.")
+    else:
+        print("Connection failed.")
+        sys.exit() #immediately end the program
 
 #automaticly called when a message is successfully published
 def behaviour_on_publish(client, userdata, mid):

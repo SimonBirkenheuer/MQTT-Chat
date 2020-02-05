@@ -2,6 +2,7 @@
 
 import paho.mqtt.client as mqtt
 import json
+import sys
 
 def run():
 
@@ -9,7 +10,7 @@ def run():
     #---
 
     host = "localhost"
-    topic = "test/"
+    topic = "hello/"
 
     username = "Test"
     password = "test"
@@ -72,12 +73,23 @@ def run():
 
     #now we are done and the program is going to end
 
-#automaticly called on successfull connection
+#automaticly called after connection attempt
 def behaviour_on_connect(client, userdata, flags, rc):
-    print("Connection to the broker established.")
+
+    #successfull connection
+    if rc == 0:
+        print("Connection to the broker established.")
+    else:
+        print("Connection failed.")
+        sys.exit() #immediately end the program
 
 #automaticly called on successfull subscription
 def behaviour_on_subscribe(client, userdata, mid, granted_qos):
+
+    #we are now successfully subscribed
+    #if we do not have read permissions on this topic we are not going to get any messages
+    print("Subscription successfull. If you are not getting any messages make sure you have read acces on this topic (" +userdata.get("topic") + ").")
+
     #we inform everyone subscribed to the topic that we are now also subscribed
     notice = "User " + userdata.get("username") + " is now subscribed to " + userdata.get("topic") + " ."
     payload = {"type": "notice", "from": userdata.get("username"), "notice": notice }
