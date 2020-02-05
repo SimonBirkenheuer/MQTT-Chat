@@ -1,4 +1,4 @@
-# This part of the Chat application recieves the incoming messages and prints them
+    # This part of the Chat application recieves the incoming messages and prints them
 
 import paho.mqtt.client as mqtt
 import json
@@ -12,7 +12,7 @@ def run():
     topic = "test/"
 
     username = "Test"
-    password = None
+    password = "test"
 
     #---
 
