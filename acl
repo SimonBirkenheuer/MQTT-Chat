@@ -1,0 +1,9 @@
+# this is the access controll list for the mqtt client
+
+# the test user is allowed access to test/ and all ist subtopics
+user Test
+topic readwrite test/#
+
+# the server user is allowed to access everything
+user Server
+topic readwrite &SYS/#
