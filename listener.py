@@ -10,7 +10,7 @@ def run():
     #---
 
     host = "localhost"
-    topic = "hello/"
+    topic = "test/"
 
     username = "Test"
     password = "test"

@@ -9,7 +9,7 @@ def run():
     #---
 
     host = "localhost"
-    topic = "test/"
+    topic = "hello/"
 
     username = "Test"
     password = "test"
@@ -55,7 +55,7 @@ def run():
     while running:
 
         #we ask the user for iput
-        user_input = input("Enter yout message. To exit the chat type exit.\n")
+        user_input = input("Enter your message. To exit the chat type exit.\n")
 
         #exit the loop if the user wants to
         if user_input == "exit" or user_input == "Exit":
@@ -67,7 +67,13 @@ def run():
             payload = {"type": "message", "from": username, "message": user_input}
             #json.dumps transforms the dictionary into valid JSON
             #paho-mqtt cant send python dictionarys, but it can send JSON
-            mqtt_client.publish(topic, json.dumps(payload))
+            publish_status = mqtt_client.publish(topic, json.dumps(payload))
+
+            #notice if sending the message failed for some reason
+            #if you publish to a topic you have no write access to no error is going to be raised
+            if publish_status.rc != mqtt.MQTT_ERR_SUCCESS:
+                print("For some reason the message could not be sent.")
+
 
     #stopping the message loop
     mqtt_client.loop_stop()
