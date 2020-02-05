@@ -15,7 +15,7 @@ After installing the mosquitto package simply run:
 `mosquitto -c mosquitto.conf`
 
 This should start a MQTT-Broker running on the default port 1883.<br>
-The broker is configured to only accept connections from the user "Test" with the passworrd "test". Additionally this "Test" user is only allowed to read or write on the topic "test/" and all ist sub topics.<br>
+The broker is configured to only accept connections from the user "Test" with the passworrd "test" and the user "Server" with the password "admin". Additionally this "Test" user is only allowed to read or write on the topic "test/" and all ist sub topics.<br>
 You can manually interact with your new broker:
 
 `mosquitto_sub -h localhost -t test/ -u Test -P test`<br>
