@@ -12,15 +12,16 @@ MQTT is most likely not the most sensible choice for implementing a chat. The po
 ### Arch Linux
 After installing the mosquitto package simply run:
 
-`mosquitto`
+`mosquitto -c mosquitto.conf`
 
 This should start a MQTT-Broker running on the default port 1883.<br>
+The broker is configured to only accept connections from the user "Test" with the passworrd "test". Additionally this "Test" user is only allowed to read or write on the topic "test/" and all ist sub topics.<br>
 You can manually interact with your new broker:
 
-`mosquitto_sub -h localhost -t test/`<br>
+`mosquitto_sub -h localhost -t test/ -u Test -P test`<br>
 *The topic for testing is aptly named test/.*
 
-`mosquitto_pub -h localhost -t test/ -m "Hello World"`<br>
+`mosquitto_pub -h localhost -t test/ -u Test -P test -m "Hello World"`<br>
 *Publishes the message "Hello World" to the test/ topic. The message should now be recieved by the subscribed listener from above.*
 
 ## How to start the application
