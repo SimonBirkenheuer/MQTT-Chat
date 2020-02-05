@@ -6,4 +6,4 @@ topic readwrite test/#
 
 # the server user is allowed to access everything
 user Server
-topic readwrite &SYS/#
+topic readwrite #
