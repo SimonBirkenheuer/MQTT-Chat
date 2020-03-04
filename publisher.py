@@ -33,7 +33,7 @@ def run():
 
     #---
 
-    #define bahavior on events by passing the functions that should be called to the client
+    #define the client bahavior by passing the functions that should be called to the client
     #the functions are defined further down in the code
     #---
 

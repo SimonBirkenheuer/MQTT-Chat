@@ -26,6 +26,9 @@ You can manually interact with your new broker:
 
 If you subscribe to a topic you do not have read access to you wont get a error you just wont get any messages.
 
+For the RoboLab workshop the test user has the Username "chat" with password "chat" and access to topics starting with "chat".
+The broker is hosted on mothership.inf.tu-dresden.de .
+
 ## How to start the application
 
 Make sure you have the paho-mqtt and json python packages installed.<br>
@@ -36,7 +39,7 @@ Both programs allow for a host, topic and a username to be specified.
 
 ## About the chat protocol
 
-MQTT allows us to transfer a payload. This Payload has to be a byte array like type. Internaly the payload is represented as a python dictionary. This dictionary has to be converted in order to be transmitted. In this Project JSON is used for that purpose, since the json.dumps() and json.loads() methods from the json package for python allow for easy conversion.
+MQTT allows us to transfer a payload. This Payload has to be a byte array like type. Internally the payload is represented as a python dictionary. This dictionary has to be converted in order to be transmitted. In this Project JSON is used for that purpose, since the json.dumps() and json.loads() methods from the json package for python allow for easy conversion.
 
 The messages have multiple fields:
 
