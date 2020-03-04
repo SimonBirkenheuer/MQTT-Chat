@@ -8,11 +8,11 @@ def run():
     #define constants
     #---
 
-    host = "localhost"
-    topic = "hello/"
+    host = "mothership.inf.tu-dresden.de"
+    topic = "chat"
 
-    username = "Test"
-    password = "test"
+    username = "chat"
+    password = "chat"
 
     #---
 

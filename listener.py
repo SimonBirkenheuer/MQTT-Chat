@@ -6,16 +6,16 @@ import sys
 
 def run():
 
-    #define constants
-    #---
+    # define constants
+    # ---
 
-    host = "localhost"
-    topic = "test/"
+    host = "mothership.inf.tu-dresden.de"
+    topic = "chat"
 
-    username = "Test"
-    password = "test"
+    username = "chat"
+    password = "chat"
 
-    #---
+    # ---
 
     #initialize the mqtt client that is going to handle all messages
     #user_info contains the basic information about the connection and is going to be returned to callbacks from the client
